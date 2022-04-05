@@ -23,8 +23,8 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling();
         
-        $user = User::factory()->create();
-        $this->actingAs($user);
+        $user = User::factory()->create(); //crea un usuario
+        $this->actingAs($user); //autentica el usuario
 
        Client::factory()->create(); // crea un cliente
                    

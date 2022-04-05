@@ -21,7 +21,7 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::resource('/clientes', ClientController::class);
     Route::get('/dashboard', function(){
-        return view('clientes.dashboard');
+        return view('dashboard');
     })->name('dashboard');
 });
 
