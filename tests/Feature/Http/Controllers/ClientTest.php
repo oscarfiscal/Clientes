@@ -39,6 +39,9 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling(); 
 
+        $user = User::factory()->create(); //crea un usuario
+        $this->actingAs($user); //autentica el usuario
+
         $response = $this->post('/clientes', [
             'nombre' => 'oscar fiscal',
             'imagen' => 'url.jpg',

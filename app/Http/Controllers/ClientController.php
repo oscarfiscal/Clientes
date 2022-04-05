@@ -7,6 +7,14 @@ use Illuminate\Http\Request;
 
 class ClientController extends Controller
 {
+
+    protected $client;
+
+    public function __construct (Client $client)
+    {
+        $this->client = $client;
+    
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +45,17 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $client = $request->all();
+
+        if($imagen = $request->file('imagen')) {
+            $rutaGuardarImg = 'imagen/';
+            $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenProducto);
+            $client['imagen'] = "$imagenProducto";             
+        }
+        
+        Client::create($client);
+        return redirect()->route('clientes.index');
     }
 
     /**
