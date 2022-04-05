@@ -9,7 +9,7 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet"> <!-- cdn tailwindcss  para los estilos-->
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 

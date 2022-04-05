@@ -2,9 +2,11 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\User;
+use App\Models\Client;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class ClientTest extends TestCase
 {
@@ -20,6 +22,9 @@ class ClientTest extends TestCase
 
     {
         $this->withoutExceptionHandling();
+        
+        $user = User::factory()->create();
+        $this->actingAs($user);
 
        Client::factory()->create(); // crea un cliente
                    
@@ -34,7 +39,7 @@ class ClientTest extends TestCase
     {
         $this->withoutExceptionHandling(); 
 
-        $response = $this->post('/clients', [
+        $response = $this->post('/clientes', [
             'nombre' => 'oscar fiscal',
             'imagen' => 'url.jpg',
              'cedula' => '123456789',
