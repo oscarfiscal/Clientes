@@ -62,6 +62,22 @@ class ClientTest extends TestCase
     
     }
 
+    //test para editar un cliente
+
+    public function test_edit_client()
+    {
+        $this->withoutExceptionHandling(); 
+
+        $user = User::factory()->create(); //crea un usuario
+        $this->actingAs($user); //autentica el usuario
+
+        $cliente = Client::factory()->create(); //crea un cliente
+
+        $response = $this->get('/clientes/'.$cliente->id.'/edit')->assertOk(); //obtiene la ruta clientes/id/edit y verifica que el status sea 200
+        $response->assertViewIs('clientes.editar'); //verifica que la vista sea clientes.editar
+        $response->assertViewHas('cliente'); //verifica que la vista tenga el cliente
+    }
+
     //test para eliminar un cliente
 
     public function test_delete_client()

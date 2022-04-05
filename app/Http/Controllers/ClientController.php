@@ -4,17 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Client;
 use Illuminate\Http\Request;
+use App\Http\Requests\Client as ClientRequests;
 
 class ClientController extends Controller
 {
 
-    protected $client;
-
-    public function __construct (Client $client)
-    {
-        $this->client = $client;
-    
-    }
     /**
      * Display a listing of the resource.
      *
@@ -43,19 +37,19 @@ class ClientController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ClientRequests $request)
     {
-        $client = $request->all();
+        $client = $request->all();  //obtiene todos los datos del formulario
 
-        if($imagen = $request->file('imagen')) {
-            $rutaGuardarImg = 'imagen/';
-            $imagenClient = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
-            $imagen->move($rutaGuardarImg, $imagenClient);
-            $client['imagen'] = "$imagenClient";             
+        if($imagen = $request->file('imagen')) {  //si existe el campo imagen
+            $rutaGuardarImg = 'imagen/'; //ruta donde se guardara la imagen
+            $imagenClient = date('YmdHis'). "." . $imagen->getClientOriginalExtension();    //nombre de la imagen
+            $imagen->move($rutaGuardarImg, $imagenClient); //mueve la imagen a la ruta especificada
+            $client['imagen'] = "$imagenClient";              
         }
         
-        Client::create($client);
-        return redirect()->route('clientes.index');
+        Client::create($client);    //crea el cliente
+        return redirect()->route('clientes.index'); //redirecciona a la ruta clientes.index
     }
 
     /**
@@ -89,7 +83,7 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $cliente)
+    public function update(Client $request, Client $cliente)
     {
         $client = $request->all();  //obtiene todos los datos del formulario
         if($imagen = $request->file('imagen')){
