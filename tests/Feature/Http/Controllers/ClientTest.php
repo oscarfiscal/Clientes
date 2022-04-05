@@ -61,4 +61,22 @@ class ClientTest extends TestCase
         ]);    // verifica que el cliente se haya creado en la base de datos  
     
     }
+
+    //test para eliminar un cliente
+
+    public function test_delete_client()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = User::factory()->create(); //crea un usuario
+        $this->actingAs($user); //autentica el usuario
+
+        $client = Client::factory()->create(); //crea un cliente
+
+        $response = $this->delete('/clientes/'.$client->id)->assertRedirect('clientes'); //elimina el cliente
+
+        $this->assertDatabaseMissing('clients', [
+            'id' => $client->id,
+        ]); //verifica que el cliente no exista en la base de datos
+    }
 }
