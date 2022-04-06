@@ -9,6 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <a type="button" href="{{ route('clientes.create') }}"  style="float: right;" class=" bg-indigo-600 px-12 py-2 rounded text-gray-200 font-semibold hover:bg-indigo-800 transition duration-200 each-in-out">Crear</a>
+                <a type="button" href="{{ route('servicios.create') }}"  style="background-color:black; float: right;" class=" px-12 py-2 rounded text-gray-200 font-semibold hover:bg-indigo-800 transition duration-200 each-in-out">Crear servicio</a>
            
                 <table class="table-auto w-full">
                 <thead>

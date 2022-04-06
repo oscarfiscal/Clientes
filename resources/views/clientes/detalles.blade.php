@@ -38,7 +38,7 @@
         @foreach($services as $service)
         <tr>
           <td>{{$service->nombre}}</td>
-          <td><img  width="100" height="100" src="{{$service->imagen}}" alt=""></td>
+          <td><img  width="100" height="100"  src="/imagen/{{$service->imagen}}" alt=""></td>
           <td>{{$service->tipo_servicio}}</td>
           <td>{{$service->fecha_inicio}}</td>
           <td>{{$service->fecha_fin}}</td>
