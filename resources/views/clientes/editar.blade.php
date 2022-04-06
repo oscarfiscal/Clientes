@@ -7,7 +7,7 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-           
+
             <form action="{{ route('clientes.update',$cliente->id)}}" method="POST" enctype="multipart/form-data"> 
             @csrf
             @method('PUT')
@@ -36,7 +36,7 @@
                 <div class="grid grid-cols-1 mt-5 mx-7">
                     <img src="/imagen/{{ $cliente->imagen }}" width="200px" id="imagenSeleccionada">
                 </div>                                    
-                
+
                 <div class="grid grid-cols-1 mt-5 mx-7">
                 <label class="uppercase md:text-sm text-xs text-gray-500 text-light font-semibold mb-1">Subir Imagen</label>
                     <div class='flex items-center justify-center w-full'>
@@ -46,7 +46,7 @@
                             <p class='lowercase text-sm text-gray-400 group-hover:text-purple-600 pt-1 tracking-wider'>Seleccione la imagen</p>
                             </div>
                         <input name="imagen" id="imagen" type='file' class="hidden" />
-                       
+
                         </label>
                     </div>
                 </div>
@@ -56,9 +56,7 @@
                 <button type="submit"  style="background-color:rgb(58, 29, 138);" class='rounded-lg shadow-xl font-medium text-white px-4 py-2'>Guardar</button>
                 </div>
             </form>
-            @foreach ($services as $service)
-                <h1>{{$service->nombre}}</h1>
-                @endforeach 
+
             </div>
         </div>
     </div>
