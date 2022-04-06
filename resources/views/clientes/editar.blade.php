@@ -56,7 +56,9 @@
                 <button type="submit"  style="background-color:rgb(58, 29, 138);" class='rounded-lg shadow-xl font-medium text-white px-4 py-2'>Guardar</button>
                 </div>
             </form>
-                
+            @foreach ($services as $service)
+                <h1>{{$service->nombre}}</h1>
+                @endforeach 
             </div>
         </div>
     </div>

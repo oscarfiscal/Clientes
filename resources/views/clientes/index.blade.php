@@ -46,6 +46,8 @@
                                     @method('DELETE')
                                     <button type="submit"  style="background-color:red;" class="rounded text-white font-bold py-2 px-4">Borrar</button>
                                 </form>
+                                 <!-- botón detalles -->
+                                 <a  href="{{ route('clientes.detalles',$client->id ) }}" class="rounded bg-blue-700 hover:bg-blue-800 text-white font-bold py-2 px-4">Detalles</a>
                             </div>
                         </td>
                     </tr>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Client;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Http\Requests\Client as ClientRequests;
 
@@ -71,10 +72,24 @@ class ClientController extends Controller
      */
     public function edit(Client $cliente)
     {
-        return view('clientes.editar', compact('cliente'));
+           
+        $services = Service::where('client_id', $cliente->id)->get();
+        return view('clientes.editar', compact('cliente', 'services'));
        
-    
     }
+      /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Models\Client  $client
+     * @return \Illuminate\Http\Response
+     */
+    public function detalles(Client $cliente)
+    {
+        $services = Service::where('client_id', $cliente->id)->get();
+        return view('clientes.detalles', compact('cliente', 'services'));
+       
+    }
+
 
     /**
      * Update the specified resource in storage.
@@ -83,7 +98,7 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Client $request, Client $cliente)
+    public function update(Request $request, Client $cliente)
     {
         $client = $request->all();  //obtiene todos los datos del formulario
         if($imagen = $request->file('imagen')){
